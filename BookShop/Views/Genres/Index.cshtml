@@ -1,0 +1,35 @@
+﻿@model IEnumerable<BookShop.Domain.Genre>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="d-flex justify-content-between">
+    <h2 class="fw-bold display-4">Жанры</h2>
+
+    <p>
+        @Html.ActionLink("Добавить жанр", "Create", new {}, new { @class="btn btn-info"})
+    </p>
+</div>
+
+
+<table class="table table-borderless">
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.ActionLink(item.Name, "Genre", new { id = item.Id }, new { @class="custom-link fw-semibold fs-5"})
+            </td>
+            <td class="d-flex justify-content-end">
+                <button class="btn btn-default dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fa fa-pencil-square fa-2x" aria-hidden="true"></i>
+                </button>
+                <ul class="dropdown-menu">
+                    <li>@Html.ActionLink("Изменить", "Edit", new { id=item.Id }, new { @class="dropdown-item"})</li>
+                    <li>@Html.ActionLink("Удалить", "Delete", new { id=item.Id }, new { @class="dropdown-item"})</li>
+                    <li>@Html.ActionLink("Detailss", "Details", new { id=item.Id }, new { @class="dropdown-item"})</li>
+                </ul>
+            </td>
+        </tr>
+    }
+</table>
+

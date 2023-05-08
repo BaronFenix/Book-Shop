@@ -1,0 +1,29 @@
+﻿@model BookShop.Domain.Genre
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<div class="container">
+    <h3 class="fw-semibold fs-3">Вы действительно хотите удалить этот жанр?</h3>
+    <hr />
+    <div class="card my-3" style="width: 18rem;">
+       <div class="card-body">
+        <h3 class="card-title">
+            @Html.DisplayFor(model => model.Name)
+        </h3>
+        <p class="card-text">
+            @Html.DisplayFor(model => model.Description)
+        </p>
+        </div>
+    </div>
+    <div class="form-group">
+        @using (Html.BeginForm(FormMethod.Post)){
+        @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Удалить" class="btn btn-danger" />
+            </div>
+        }
+    </div>
+</div>

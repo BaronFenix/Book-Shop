@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<form method="Post" action="/Setup/Index">
+    <p>Состояние хранилища авторов</p>
+    <code>
+        @if (ViewBag.IsEmptyAuthors)
+        {
+            <b>Коллекция пуста. <input type="submit" name="create_authors" value="Cоздать" /> новую?</b>
+        }
+        else
+        {
+            <b>Коллекция не пуста, обновить?</b>
+        }
+    </code>
+
+    <p>Состояние хранилища книг</p>
+    <code>
+        @if (ViewBag.IsEmptyBooks)
+        {
+            <b>Коллекция пуста. <input type="submit" name="create_books" value="Cоздать" /> новую?</b>
+        }
+        else
+        {
+            <b>Коллекция не пуста, обновить?</b>
+        }
+    </code>
+
+    <p>Состояние хранилища жанров</p>
+    <code>
+        @if (ViewBag.IsEmptyGenres)
+        {
+            <b>Коллекция пуста. <input type="submit" name="create_genres" value="Cоздать" /> новую?</b>
+        }
+        else
+        {
+            <b>Коллекция не пуста, обновить?</b>
+        }
+    </code>
+</form>

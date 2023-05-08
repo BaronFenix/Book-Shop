@@ -1,0 +1,46 @@
+﻿@page "/Genres/Genre/{Id:int}" 
+@model BookShop.Domain.Genre
+@{
+    List<Book> bookList = ViewBag.BooksList as List<Book>;
+}
+
+<div class="container">
+    <div>
+        <h3>
+            @Html.DisplayFor(model => model.Name, new { @class="display-3 fw-semibold" } )
+        </h3>
+        <p><i>
+            @Html.DisplayFor(Model => Model.Description, new { @class="" })
+        </i></p>
+        <hr />
+    </div>
+    
+    <div class="content">
+    @{
+        if (bookList.Count > 0)
+        {
+            foreach (var item in bookList)
+            {
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src=@item.ImageUrl class="img-fluid rounded-start">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">@item.Title</h5>
+                                <p class="card-text">...</p>
+                                <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else if (bookList.Count == 0)
+        {
+            <h2>Книг в данной категории пока нет</h2>
+        }
+    }
+    </div>
+</div>

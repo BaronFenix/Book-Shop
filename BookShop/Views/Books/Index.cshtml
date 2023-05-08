@@ -1,0 +1,50 @@
+﻿@model List<BookShop.Domain.FullBookInfo>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container">
+    <div class="d-flex justify-content-between">
+        <h2 class="fw-bold display-4">Все книги</h2>
+        <p>
+            @Html.ActionLink("Добавить книгу", "Create", new {}, new { @class="btn btn-info"})
+        </p>
+    </div>
+
+    <div class="d-flex flex-column flex-wrap justify-content-center">
+        @{
+            foreach (var item in Model)
+            {
+                string authorFullName = item.Author.FirstName + " " + item.Author.LastName;
+                string authorPageRoute = $"/Authors/Detail/{item.Author.Id}";
+
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src=@item.Book.ImageUrl class="img-fluid rounded-start">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">@item.Book.Title</h5>
+                                <p class="card-title">
+                                    @Html.ActionLink(authorFullName, authorPageRoute, new {}, new { @class="custom-link"})
+                                </p>
+                            <p class="card-title"><strong>Жанр:</strong> @item.Genre.Name</p>
+                            <p class="card-title"><strong>Год издания:</strong> @item.Book.PublishedYear</p>
+                            <p class="card-title"><strong>Издательство:</strong> @item.Book.PublishName</p>
+                            <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+                            
+                            <div class="d-flex">
+                                <p class="btn btn-outline-warning">Купить</p>
+                                <p class="btn btn-outline-warning">В корзину</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        }
+     }
+    </div>
+</div>
